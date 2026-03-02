@@ -110,7 +110,7 @@ export default function FeaturedContent() {
         <div className="w-24 h-1 bg-pink-300 mx-auto rounded-full mt-6" />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PANELS.map((panel, i) => (
           <motion.div 
             key={panel.id}
@@ -118,7 +118,7 @@ export default function FeaturedContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center h-full"
           >
             {/* Twitch Panel Header Image */}
             <img 
@@ -129,7 +129,7 @@ export default function FeaturedContent() {
             
             {/* Panel Content Box */}
             {panel.content && (
-              <div className="bg-white rounded-3xl p-6 pt-8 shadow-lg border-2 border-pink-50 w-full relative z-0">
+              <div className="bg-white rounded-3xl p-6 pt-8 shadow-lg border-2 border-pink-50 w-full relative z-0 flex-grow">
                 {panel.content}
               </div>
             )}
