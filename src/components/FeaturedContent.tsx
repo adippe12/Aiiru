@@ -16,9 +16,20 @@ const PANELS = [
     id: 'donate',
     titleImage: 'https://panels.twitch.tv/panel-1295086456-image-6133a5a1-b8cf-4084-b259-cec201284f72',
     content: (
-      <div className="text-gray-700 space-y-4 leading-relaxed">
+      <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
         <p>Donations are never required but always incredibly appreciated! They help me improve the stream and buy more pastries.</p>
         <p className="text-xs italic text-gray-400 mt-4">*Please note that all donations are non-refundable.</p>
+        <div className="mt-auto pt-6">
+          <a 
+            href="https://ko-fi.com/aiiru" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-rose-400 hover:bg-rose-500 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+          >
+            <Heart className="w-5 h-5" />
+            Support on Ko-fi
+          </a>
+        </div>
       </div>
     )
   },
@@ -26,8 +37,19 @@ const PANELS = [
     id: 'wishlist',
     titleImage: 'https://panels.twitch.tv/panel-1295086456-image-3530c58a-9f42-4b29-9201-34bc50327781',
     content: (
-      <div className="text-gray-700 space-y-4 leading-relaxed">
+      <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
         <p>Want to send a gift? Check out my Throne wishlist!</p>
+        <div className="mt-auto pt-6">
+          <a 
+            href="https://throne.com/Aiiru" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+          >
+            <Gift className="w-5 h-5" />
+            Support on Throne
+          </a>
+        </div>
       </div>
     )
   }

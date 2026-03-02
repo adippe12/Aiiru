@@ -1,16 +1,11 @@
 import { motion } from 'motion/react';
-import { Instagram, Youtube, Twitter, Music, Heart, Gift } from 'lucide-react';
+import { Instagram, Youtube, Twitter, Music } from 'lucide-react';
 
 const SOCIAL_LINKS = [
   { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/aiiru_twitch/', color: 'from-pink-500 to-orange-400' },
   { name: 'TikTok', icon: Music, url: 'https://www.tiktok.com/@aiirutwitch', color: 'from-black to-gray-800' },
   { name: 'YouTube', icon: Youtube, url: 'https://www.youtube.com/@Aiirulol', color: 'from-red-500 to-red-600' },
   { name: 'X (Twitter)', icon: Twitter, url: 'https://x.com/Aiiru_Twitch', color: 'from-blue-400 to-blue-500' },
-];
-
-const SUPPORT_LINKS = [
-  { name: 'Ko-fi', icon: Heart, url: 'https://ko-fi.com/aiiru', color: 'bg-rose-400' },
-  { name: 'Throne', icon: Gift, url: 'https://throne.com/Aiiru', color: 'bg-purple-500' },
 ];
 
 export default function Socials() {
@@ -38,26 +33,6 @@ export default function Socials() {
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             <social.icon className="w-12 h-12 mb-4 drop-shadow-md" />
             <span className="font-bold text-lg tracking-wide">{social.name}</span>
-          </motion.a>
-        ))}
-      </div>
-
-      <div className="flex flex-col md:flex-row justify-center gap-6">
-        {SUPPORT_LINKS.map((support, index) => (
-          <motion.a
-            key={support.name}
-            href={support.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 + index * 0.1 }}
-            whileHover={{ scale: 1.05 }}
-            className={`flex items-center gap-4 px-8 py-4 rounded-full ${support.color} text-white shadow-lg hover:shadow-xl transition-all`}
-          >
-            <support.icon className="w-6 h-6" />
-            <span className="font-bold text-lg">Support on {support.name}</span>
           </motion.a>
         ))}
       </div>
