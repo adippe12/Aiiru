@@ -18,7 +18,7 @@ const PROFILES = [
     region: 'euw1',
     server: 'EUW',
     url: 'https://www.op.gg/summoners/euw/enchanter-aiiru',
-    description: 'Alt / Smurf Account',
+    description: 'Alt Account',
     fallbackIcon: 'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/5497.png',
   }
 ];
@@ -60,6 +60,9 @@ function ProfileCard({ profile, index }: { profile: typeof PROFILES[0], index: n
           const errorData = await res.json().catch(() => null);
           if (res.status === 403) {
             throw new Error(`Riot API Key error (403): ${errorData?.details?.status?.message || 'Forbidden'}`);
+          }
+          if (res.status === 401) {
+            throw new Error(`Riot API Key missing or invalid (401): ${errorData?.details?.status?.message || 'Unauthorized'}`);
           }
           throw new Error(`Failed to fetch: ${res.status}`);
         }
@@ -132,8 +135,8 @@ function ProfileCard({ profile, index }: { profile: typeof PROFILES[0], index: n
               Fetching live data...
             </div>
           ) : error ? (
-            <div className={`text-sm p-3 rounded-xl border ${error.includes('403') ? 'text-red-600 bg-red-50 border-red-100' : 'text-gray-500 bg-gray-50 border-gray-100'}`}>
-              {error.includes('403') ? 'Riot API Key expired. Please update it in Secrets.' : 'Live stats unavailable. Click to view on OP.GG.'}
+            <div className={`text-sm p-3 rounded-xl border ${(error.includes('403') || error.includes('401')) ? 'text-red-600 bg-red-50 border-red-100' : 'text-gray-500 bg-gray-50 border-gray-100'}`}>
+              {(error.includes('403') || error.includes('401')) ? 'Riot API Key missing or expired. Please update it in Secrets.' : 'Live stats unavailable. Click to view on OP.GG.'}
             </div>
           ) : soloQueue ? (
             <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
