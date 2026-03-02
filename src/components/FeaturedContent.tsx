@@ -10,13 +10,7 @@ const PANELS = [
   {
     id: 'about',
     titleImage: 'https://panels.twitch.tv/panel-1295086456-image-0afb4380-aa76-4fdc-9108-2b04631146e9',
-    content: (
-      <div className="text-gray-700 space-y-3 leading-relaxed">
-        <p>Hi! I'm Aiiru, a passionate gamer and content creator.</p>
-        <p>I mainly play League of Legends (Enchanter main!)</p>
-        <p>Welcome to the pastry shop! 🍰</p>
-      </div>
-    )
+    
   },
   {
     id: 'donate',
@@ -116,7 +110,7 @@ export default function FeaturedContent() {
         <div className="w-24 h-1 bg-pink-300 mx-auto rounded-full mt-6" />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
         {PANELS.map((panel, i) => (
           <motion.div 
             key={panel.id}
@@ -130,13 +124,15 @@ export default function FeaturedContent() {
             <img 
               src={panel.titleImage} 
               alt={`${panel.id} panel`} 
-              className="w-full max-w-[320px] object-contain mb-[-10px] relative z-10 drop-shadow-md hover:scale-105 transition-transform duration-300" 
+              className={`w-full max-w-[320px] object-contain relative z-10 drop-shadow-md hover:scale-105 transition-transform duration-300 ${panel.content ? 'mb-[-10px]' : ''}`} 
             />
             
             {/* Panel Content Box */}
-            <div className="bg-white rounded-3xl p-8 pt-10 shadow-lg border-2 border-pink-50 w-full flex-grow relative z-0">
-              {panel.content}
-            </div>
+            {panel.content && (
+              <div className="bg-white rounded-3xl p-6 pt-8 shadow-lg border-2 border-pink-50 w-full relative z-0">
+                {panel.content}
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
