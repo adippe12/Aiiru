@@ -186,7 +186,6 @@ export default function LeagueProfiles() {
           <Shield className="w-8 h-8" />
         </div>
         <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">League of Legends Profiles</h2>
-        <p className="text-lg text-gray-600 italic">Live stats powered by Riot Games API</p>
         <div className="w-24 h-1 bg-blue-300 mx-auto rounded-full mt-6" />
       </div>
 

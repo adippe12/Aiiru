@@ -29,17 +29,17 @@ export default function RulesPerks() {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-pink-100 relative overflow-hidden"
+          className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-pink-100 relative overflow-hidden flex flex-col items-center"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-pink-100 rounded-bl-full opacity-50" />
-          <div className="flex items-center gap-4 mb-8 relative z-10">
-            <div className="p-4 bg-pink-100 rounded-2xl text-pink-500">
-              <ShieldAlert className="w-8 h-8" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-800">Stream Rules</h2>
-          </div>
           
-          <ul className="space-y-6 relative z-10">
+          <img 
+            src="https://panels.twitch.tv/panel-1295086456-image-6814239a-d0cd-48f9-aafc-811410fd9072" 
+            alt="Rules panel" 
+            className="w-full max-w-[320px] object-contain mb-8 relative z-10 drop-shadow-md" 
+          />
+          
+          <ul className="space-y-6 relative z-10 w-full">
             {RULES.map((rule, index) => (
               <motion.li 
                 key={index}
@@ -63,17 +63,17 @@ export default function RulesPerks() {
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-purple-100 relative overflow-hidden"
+          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-purple-100 relative overflow-hidden flex flex-col items-center"
         >
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-200 rounded-tr-full opacity-30" />
-          <div className="flex items-center gap-4 mb-8 relative z-10">
-            <div className="p-4 bg-purple-200 rounded-2xl text-purple-600 shadow-inner">
-              <Star className="w-8 h-8 fill-purple-600" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-800">Sub Perks</h2>
-          </div>
+          
+          <img 
+            src="https://panels.twitch.tv/panel-1295086456-image-65639caa-0df1-48c2-99bb-76484cee9886" 
+            alt="Subscribe panel" 
+            className="w-full max-w-[320px] object-contain mb-8 relative z-10 drop-shadow-md" 
+          />
 
-          <div className="mb-8 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-purple-100 shadow-sm">
+          <div className="mb-8 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-purple-100 shadow-sm w-full relative z-10">
             <h3 className="text-xl font-bold text-purple-800 mb-2 flex items-center gap-2">
               <Crown className="w-5 h-5" /> Tier 1
             </h3>

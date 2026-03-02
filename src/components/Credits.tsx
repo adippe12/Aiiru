@@ -22,11 +22,12 @@ const CREDITS = [
 export default function Credits() {
   return (
     <section className="py-24 px-4 max-w-5xl mx-auto">
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center p-4 bg-pink-100 rounded-full text-pink-500 mb-6 shadow-sm">
-          <Palette className="w-8 h-8" />
-        </div>
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Artists & Contributors</h2>
+      <div className="text-center mb-16 flex flex-col items-center">
+        <img 
+          src="https://panels.twitch.tv/panel-1295086456-image-713d0ce1-08eb-4cec-9cdf-ceb120c0cd07" 
+          alt="Credits panel" 
+          className="w-full max-w-[320px] object-contain mb-6 drop-shadow-md" 
+        />
         <p className="text-lg text-gray-600 italic">Thank you for making the Pastry Shop beautiful!</p>
         <div className="w-24 h-1 bg-pink-300 mx-auto rounded-full mt-6" />
       </div>
