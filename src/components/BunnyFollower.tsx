@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const URLS = {
-  IDLE: 'https://i.ibb.co/ZRtKc72D/Bunny-Idle.gif',
-  RUN: 'https://i.ibb.co/MDyq8jmq/Bunny-Run.gif',
-  SLEEP: 'https://i.ibb.co/2DCB4Tv/Bunny-Sleep.gif'
+  IDLE: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/BunnyIdle.gif',
+  RUN: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/BunnyRun.gif',
+  SLEEP: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/BunnySleep.gif'
 };
 
 const SPEED = 0.04; // Slower than the original 0.12
