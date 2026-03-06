@@ -6,9 +6,14 @@ const URLS = {
   SLEEP: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/BunnySleep.gif'
 };
 
-const SPEED = 0.04; // Slower than the original 0.12
+const SPEED = 0.04; 
 const STOP_THRESHOLD = 5.0;
 const SLEEP_DELAY = 5000;
+
+// Offsets to position the bunny relative to the cursor
+// Negative X moves Left, Negative Y moves Up
+const OFFSET_X = -5; 
+const OFFSET_Y = -15;
 
 export default function BunnyFollower() {
   const [bunnyPos, setBunnyPos] = useState({ x: -100, y: -100 });
@@ -38,8 +43,14 @@ export default function BunnyFollower() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
-      const dx = mouseRef.current.x - bunnyRef.current.x;
-      const dy = mouseRef.current.y - bunnyRef.current.y;
+      // Calculate the target position with the offset applied
+      const targetX = mouseRef.current.x + OFFSET_X;
+      const targetY = mouseRef.current.y + OFFSET_Y;
+
+      // Calculate distance between current bunny pos and TARGET pos
+      const dx = targetX - bunnyRef.current.x;
+      const dy = targetY - bunnyRef.current.y;
+      
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance > STOP_THRESHOLD) {
@@ -79,7 +90,6 @@ export default function BunnyFollower() {
     };
   }, []);
 
-  // Don't render until we have a valid position
   if (bunnyPos.x === -100 && bunnyPos.y === -100) return null;
 
   return (
@@ -88,6 +98,8 @@ export default function BunnyFollower() {
       alt="Bunny Cursor"
       className="fixed z-[9999] pointer-events-none w-16 h-auto"
       style={{
+        // The -32 centers the image on the calculated coordinates.
+        // The coordinates themselves are now offset from the mouse.
         left: bunnyPos.x - 32 + 'px',
         top: bunnyPos.y - 32 + 'px',
         transform: `scaleX(${facingRight ? 1 : -1})`,

@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Twitch, MessageCircle, Star, Coffee, Cake, Cookie, Croissant } from 'lucide-react';
 
 const AVATAR_URL = 'https://yt3.googleusercontent.com/G0dVQHPl9WGYmn7N4ESDzmbHqHXkHkAkbZafqfjnPE9o9LwIGAg34ZTyQLNwrhqo5ZnY91VQnA=s160-c-k-c0x00ffffff-no-rj';
-const BANNER_URL = 'https://yt3.googleusercontent.com/vbt1bMn1GGNIBcjU7G-M0bzeSmW2uVYGcC6IWce2g-_0teWraNravFta1VtjZcIxtwH6gsABRw=w2120-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj';
+const BANNER_URL = 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/aiiru.png';
 
 export default function Hero() {
   return (
@@ -35,7 +35,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-40 right-20 md:right-48 text-sky-300/40 z-10"
+          className="absolute top-40 right-32 md:right-64 text-sky-300/40 z-10"
         >
           <Croissant className="w-14 h-14 md:w-20 md:h-20" />
         </motion.div>
