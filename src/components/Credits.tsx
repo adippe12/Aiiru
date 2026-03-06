@@ -29,7 +29,7 @@ export default function Credits() {
           className="w-full max-w-[320px] object-contain mb-6 drop-shadow-md" 
         />
         <p className="text-lg text-gray-600 italic">Thank you for making the Pastry Shop beautiful!</p>
-        <div className="w-24 h-1 bg-pink-300 mx-auto rounded-full mt-6" />
+        <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -37,23 +37,23 @@ export default function Credits() {
           const CardContent = (
             <div className="flex flex-col h-full justify-between">
               <div className="mb-2">
-                <h3 className="text-[10px] sm:text-xs font-bold text-pink-400 uppercase tracking-wider mb-1 line-clamp-2">
+                <h3 className="text-[10px] sm:text-xs font-bold text-blue-500 uppercase tracking-wider mb-1 line-clamp-2">
                   {credit.role}
                 </h3>
-                <p className="text-sm sm:text-base font-bold text-gray-800 group-hover:text-pink-600 transition-colors truncate">
+                <p className="text-sm sm:text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors truncate">
                   {credit.name}
                 </p>
               </div>
-              <div className="flex items-center justify-between mt-auto pt-2 border-t border-pink-50">
-                <Heart className="w-4 h-4 text-pink-200 group-hover:text-pink-400 transition-colors" />
+              <div className="flex items-center justify-between mt-auto pt-2 border-t border-blue-50">
+                <Heart className="w-4 h-4 text-blue-300 group-hover:text-blue-500 transition-colors" />
                 {credit.link && (
-                  <ExternalLink className="w-3 h-3 text-gray-300 group-hover:text-pink-400 transition-colors" />
+                  <ExternalLink className="w-3 h-3 text-gray-300 group-hover:text-blue-500 transition-colors" />
                 )}
               </div>
             </div>
           );
 
-          const cardClasses = "bg-white p-4 rounded-xl shadow-sm border border-pink-50 hover:shadow-md hover:border-pink-200 transition-all group h-full";
+          const cardClasses = "bg-white p-4 rounded-xl shadow-sm border border-blue-50 hover:shadow-md hover:border-blue-200 transition-all group h-full";
 
           return (
             <motion.div

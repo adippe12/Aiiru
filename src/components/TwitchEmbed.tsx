@@ -14,12 +14,12 @@ export default function TwitchEmbed() {
   return (
     <section className="py-24 px-4 max-w-[90rem] mx-auto">
       <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center p-4 bg-purple-100 rounded-full text-purple-600 mb-6 shadow-sm">
+        <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-full text-blue-600 mb-6 shadow-sm">
           <Twitch className="w-8 h-8" />
         </div>
         <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Live at the Pastry Shop</h2>
         <p className="text-lg text-gray-600 italic">Come hang out and watch some cute plays!</p>
-        <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-6" />
+        <div className="w-24 h-1 bg-blue-300 mx-auto rounded-full mt-6" />
       </div>
 
       <motion.div
@@ -27,7 +27,7 @@ export default function TwitchEmbed() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="w-full flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl border-4 border-purple-200 bg-black relative"
+        className="w-full flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl border-4 border-blue-200 bg-black relative"
       >
         {/* Video Player */}
         <div className="w-full lg:w-3/4 aspect-video lg:aspect-auto lg:min-h-[600px] relative">
@@ -43,7 +43,7 @@ export default function TwitchEmbed() {
         </div>
         
         {/* Chat */}
-        <div className="w-full lg:w-1/4 h-[400px] lg:h-auto border-t-4 lg:border-t-0 lg:border-l-4 border-purple-200 relative bg-white">
+        <div className="w-full lg:w-1/4 h-[400px] lg:h-auto border-t-4 lg:border-t-0 lg:border-l-4 border-blue-200 relative bg-white">
           {parents && (
             <iframe
               src={`https://www.twitch.tv/embed/aiiru_/chat?darkpopout${parents}`}

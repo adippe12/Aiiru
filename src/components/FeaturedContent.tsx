@@ -24,7 +24,7 @@ const PANELS = [
             href="https://ko-fi.com/aiiru" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-rose-400 hover:bg-rose-500 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-blue-400 hover:bg-blue-500 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
           >
             <Heart className="w-5 h-5" />
             Support on Ko-fi
@@ -44,7 +44,7 @@ const PANELS = [
             href="https://throne.com/Aiiru" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
           >
             <Gift className="w-5 h-5" />
             Support on Throne
@@ -59,12 +59,12 @@ export default function FeaturedContent() {
   return (
     <section className="py-24 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center p-4 bg-pink-100 rounded-full text-pink-500 mb-6 shadow-sm">
+        <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-full text-blue-500 mb-6 shadow-sm">
           <Star className="w-8 h-8" />
         </div>
         <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Featured Content</h2>
         <p className="text-lg text-gray-600 italic">Check out my latest videos across socials!</p>
-        <div className="w-24 h-1 bg-pink-300 mx-auto rounded-full mt-6" />
+        <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
       </div>
 
       {/* Videos Section - Asymmetric Grid for Landscape vs Portrait */}
@@ -129,7 +129,7 @@ export default function FeaturedContent() {
       {/* Info Panels Section */}
       <div className="text-center mb-16">
         <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Stream Info</h2>
-        <div className="w-24 h-1 bg-pink-300 mx-auto rounded-full mt-6" />
+        <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -151,7 +151,7 @@ export default function FeaturedContent() {
             
             {/* Panel Content Box */}
             {panel.content && (
-              <div className="bg-white rounded-3xl p-6 pt-8 shadow-lg border-2 border-pink-50 w-full relative z-0 flex-grow">
+              <div className="bg-white rounded-3xl p-6 pt-8 shadow-lg border-2 border-blue-50 w-full relative z-0 flex-grow">
                 {panel.content}
               </div>
             )}

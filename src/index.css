@@ -4,10 +4,10 @@
 @theme {
   --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Quicksand", ui-sans-serif, system-ui, sans-serif;
-  --color-pastry-pink: #fdf2f8;
-  --color-pastry-purple: #f3e8ff;
-  --color-pastry-dark: #4a3f35;
-  --color-pastry-accent: #ec4899;
+  --color-pastry-pink: #f0f9ff;
+  --color-pastry-purple: #e0f2fe;
+  --color-pastry-dark: #0f172a;
+  --color-pastry-accent: #0390fc;
 }
 
 body {
@@ -24,9 +24,9 @@ body {
   background: var(--color-pastry-pink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #fbcfe8;
+  background: #bae6fd;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f9a8d4;
+  background: #7dd3fc;
 }
