@@ -25,23 +25,22 @@ export default function FeaturedContent() {
         
         if (response.ok && data.items) {
           const realVideos = data.items.map((item: any) => {
+            const videoId = item.snippet.resourceId.videoId;
+            const thumbnail = item.snippet.thumbnails?.maxres?.url || 
+                              item.snippet.thumbnails?.high?.url || 
+                              item.snippet.thumbnails?.medium?.url || 
+                              `https://i3.ytimg.com/vi/${videoId}/hqdefault.jpg`;
             return {
-              id: item.id.videoId,
+              id: videoId,
               title: item.snippet.title,
-              link: `https://www.youtube.com/watch?v=${item.id.videoId}`
+              link: `https://www.youtube.com/watch?v=${videoId}`,
+              thumbnail: thumbnail
             };
           }).filter((video: any) => !video.title.toLowerCase().includes('#lpp'));
 
-          const latestThree = realVideos.slice(0, 3);
+          const latestVideos = realVideos.slice(0, 5);
 
-          const formattedVideos = latestThree.map((video: any) => ({
-            id: video.id,
-            title: video.title,
-            link: video.link,
-            thumbnail: `https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`
-          }));
-
-          setVideos(formattedVideos);
+          setVideos(latestVideos);
         } else {
           console.error("Failed to fetch YouTube videos:", data.error || "Unknown error");
         }
@@ -106,16 +105,16 @@ export default function FeaturedContent() {
               </div>
               
               {otherVideos.length > 0 && (
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
                   {otherVideos.map((video) => (
                     <a 
                       key={video.id} 
                       href={video.link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="group flex gap-3 items-start p-3 rounded-2xl hover:bg-gray-50 transition-colors"
+                      className="group flex flex-col gap-3 items-start rounded-2xl transition-all"
                     >
-                      <div className="w-32 aspect-video rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative">
+                      <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100 relative shadow-sm group-hover:shadow-md transition-all">
                         <img 
                           src={video.thumbnail} 
                           alt={video.title}
@@ -124,7 +123,7 @@ export default function FeaturedContent() {
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                       </div>
-                      <h4 className="font-medium text-gray-800 line-clamp-2 text-sm group-hover:text-red-600 transition-colors">
+                      <h4 className="font-medium text-gray-800 line-clamp-2 text-sm group-hover:text-red-600 transition-colors px-1">
                         {video.title}
                       </h4>
                     </a>

@@ -102,16 +102,15 @@ async function startServer() {
       }
       
       const { channelId } = req.params;
+      const uploadsPlaylistId = channelId.replace(/^UC/, 'UU');
       
-      // Fetch latest videos using YouTube Data API v3
-      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
+      // Fetch latest videos using YouTube Data API v3 (playlistItems is much cheaper on quota than search)
+      const response = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems`, {
         params: {
           key: apiKey,
-          channelId: channelId,
+          playlistId: uploadsPlaylistId,
           part: 'snippet',
-          order: 'date',
-          maxResults: 10, // Fetch a few extra to account for filtering
-          type: 'video'
+          maxResults: 50
         }
       });
       
