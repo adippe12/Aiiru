@@ -93,6 +93,34 @@ async function startServer() {
     }
   });
 
+  // YouTube API Proxy
+  app.get("/api/youtube/latest/:channelId", async (req, res) => {
+    try {
+      const apiKey = process.env.YOUTUBE_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "YOUTUBE_API_KEY not configured" });
+      }
+      
+      const { channelId } = req.params;
+      
+      // Fetch latest videos using YouTube Data API v3
+      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
+        params: {
+          key: apiKey,
+          channelId: channelId,
+          part: 'snippet',
+          order: 'date',
+          maxResults: 10, // Fetch a few extra to account for filtering
+          type: 'video'
+        }
+      });
+      
+      res.json(response.data);
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch YouTube videos", details: error.message });
+    }
+  });
+
   // Riot API Proxy
   app.get("/api/riot/player/:region/:gameName/:tagLine", async (req, res) => {
     const { region, gameName, tagLine } = req.params;

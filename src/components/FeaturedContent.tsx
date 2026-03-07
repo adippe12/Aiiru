@@ -20,40 +20,31 @@ export default function FeaturedContent() {
   useEffect(() => {
     async function fetchLatestYoutubeVideos() {
       try {
-        const channelUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCgiEvLJ7IuMewNaE-j83-3A');
-        
-        const response = await fetch(channelUrl);
+        const response = await fetch('/api/youtube/latest/UCgiEvLJ7IuMewNaE-j83-3A');
         const data = await response.json();
-        const text = data.contents;
         
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(text, "text/xml");
-        
-        const entries = Array.from(xmlDoc.querySelectorAll('entry'));
-        
-        const realVideos = entries.map(entry => {
-          const title = entry.querySelector('title')?.textContent || '';
-          const link = entry.querySelector('link')?.getAttribute('href') || '';
-          const idElement = entry.getElementsByTagName('yt:videoId')[0];
-          const id = idElement ? idElement.textContent || '' : entry.querySelector('id')?.textContent?.replace('yt:video:', '') || '';
-          
-          return { id, title, link };
-        }).filter(video => {
-          return !video.title.toLowerCase().includes('#lpp');
-        });
+        if (response.ok && data.items) {
+          const realVideos = data.items.map((item: any) => {
+            return {
+              id: item.id.videoId,
+              title: item.snippet.title,
+              link: `https://www.youtube.com/watch?v=${item.id.videoId}`
+            };
+          }).filter((video: any) => !video.title.toLowerCase().includes('#lpp'));
 
-        const latestThree = realVideos.slice(0, 3);
+          const latestThree = realVideos.slice(0, 3);
 
-        const formattedVideos = latestThree.map(video => {
-          return {
+          const formattedVideos = latestThree.map((video: any) => ({
             id: video.id,
             title: video.title,
             link: video.link,
             thumbnail: `https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`
-          };
-        });
+          }));
 
-        setVideos(formattedVideos);
+          setVideos(formattedVideos);
+        } else {
+          console.error("Failed to fetch YouTube videos:", data.error || "Unknown error");
+        }
       } catch (error) {
         console.error("Error fetching YouTube videos:", error);
       } finally {
