@@ -4,27 +4,135 @@
  */
 
 import { motion } from 'motion/react';
-import { Heart, Star, Sparkles } from 'lucide-react';
+import { Heart, Star, Sparkles, Menu, X, Cake } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Socials from './components/Socials';
 import LeagueProfiles from './components/LeagueProfiles';
 import FeaturedContent from './components/FeaturedContent';
 import RulesPerks from './components/RulesPerks';
 import TwitchEmbed from './components/TwitchEmbed';
+import TwitchClips from './components/TwitchClips';
 import Credits from './components/Credits';
 import BunnyFollower from './components/BunnyFollower';
+import StreamInfo from './components/StreamInfo';
+
+const NAV_LINKS = [
+  { name: 'Home', href: '#home' },
+  { name: 'Live', href: '#live' },
+  { name: 'Socials', href: '#socials' },
+  { name: 'League', href: '#league' },
+  { name: 'Content', href: '#content' },
+  { name: 'Clips', href: '#clips' },
+  { name: 'Info', href: '#info' },
+  { name: 'Credits', href: '#credits' },
+];
+
+function Navigation() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
+          <a href="#home" className="font-display font-bold text-xl text-blue-600 flex items-center gap-2">
+            <Cake className="w-5 h-5" />
+            AIIRU
+          </a>
+          
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-6">
+            {NAV_LINKS.map(link => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="text-sm font-medium text-gray-600 hover:text-blue-500 transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Nav Toggle */}
+          <button 
+            className="md:hidden p-2 text-gray-600"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Nav Menu */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-sm pt-20 px-4 md:hidden">
+          <div className="flex flex-col gap-4">
+            {NAV_LINKS.map(link => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-xl font-medium text-gray-800 p-4 border-b border-gray-100 active:bg-blue-50 rounded-xl"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 
 export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-blue-200 selection:text-blue-900">
+      <Navigation />
       <BunnyFollower />
-      <Hero />
-      <Socials />
-      <LeagueProfiles />
-      <TwitchEmbed />
-      <FeaturedContent />
-      <RulesPerks />
-      <Credits />
+      
+      <main className="flex flex-col">
+        <div id="home" className="scroll-mt-20">
+          <Hero />
+        </div>
+        
+        <div id="live" className="scroll-mt-20 bg-white border-b border-blue-100/50">
+          <TwitchEmbed />
+        </div>
+
+        <div id="socials" className="scroll-mt-20 bg-gradient-to-b from-blue-50/50 to-transparent">
+          <Socials />
+        </div>
+
+        <div id="league" className="scroll-mt-20 bg-white border-y border-blue-100/50">
+          <LeagueProfiles />
+        </div>
+
+        <div id="content" className="scroll-mt-20 bg-gradient-to-b from-blue-50/50 to-transparent">
+          <FeaturedContent />
+        </div>
+
+        <div id="clips" className="scroll-mt-20 bg-white border-y border-blue-100/50">
+          <TwitchClips />
+        </div>
+
+        <div id="info" className="scroll-mt-20 bg-gradient-to-b from-blue-50/50 to-transparent">
+          <StreamInfo />
+          <RulesPerks />
+        </div>
+
+        <div id="credits" className="scroll-mt-20 bg-white border-y border-blue-100/50">
+          <Credits />
+        </div>
+      </main>
       
       {/* Footer */}
       <footer className="relative bg-pastry-dark text-pastry-pink pt-20 pb-12 text-center mt-32 overflow-hidden">

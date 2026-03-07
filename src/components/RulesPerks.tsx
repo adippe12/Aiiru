@@ -21,7 +21,7 @@ const PERKS = [
 
 export default function RulesPerks() {
   return (
-    <section className="py-24 px-4 max-w-7xl mx-auto">
+    <section className="pt-12 pb-24 px-4 max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-16">
         
         {/* Stream Rules */}

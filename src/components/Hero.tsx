@@ -1,15 +1,39 @@
 import { motion } from 'motion/react';
-import { Twitch, MessageCircle, Star, Coffee, Cake, Cookie, Croissant } from 'lucide-react';
+import { Twitch, MessageCircle, Star, Coffee, Cake, Cookie, Croissant, Radio } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const AVATAR_URL = 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/pfp.jpg';
 const BANNER_URL = 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/banner.jpg';
 
 export default function Hero() {
+  const [isLive, setIsLive] = useState(false);
+  const [streamInfo, setStreamInfo] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const response = await fetch('/api/twitch/status/aiiru_');
+        if (response.ok) {
+          const data = await response.json();
+          setIsLive(data.isLive);
+          setStreamInfo(data.stream);
+        }
+      } catch (err) {
+        console.error('Failed to fetch Twitch status', err);
+      }
+    };
+
+    fetchStatus();
+    // Poll every 2 minutes
+    const interval = setInterval(fetchStatus, 120000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full min-h-[80vh] flex flex-col items-center justify-center overflow-hidden">
       {/* Background Banner */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/80 to-blue-50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white z-10" />
         <img 
           src={BANNER_URL} 
           alt="AIIRU Banner" 
@@ -49,11 +73,21 @@ export default function Hero() {
           transition={{ type: 'spring', bounce: 0.5 }}
           className="relative"
         >
-          <div className="absolute -inset-2 bg-gradient-to-tr from-blue-400 to-cyan-400 rounded-full blur-xl opacity-50 animate-pulse" />
+          {isLive && (
+            <motion.div 
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="absolute -top-4 -right-4 z-30 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg shadow-red-500/40 border-2 border-white"
+            >
+              <Radio className="w-3 h-3 animate-pulse" />
+              ON AIR
+            </motion.div>
+          )}
+          <div className={`absolute -inset-2 rounded-full blur-xl opacity-50 animate-pulse ${isLive ? 'bg-gradient-to-tr from-red-400 to-purple-400' : 'bg-gradient-to-tr from-blue-400 to-cyan-400'}`} />
           <img 
             src={AVATAR_URL} 
             alt="AIIRU Avatar" 
-            className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white shadow-2xl relative z-10 object-cover"
+            className={`w-40 h-40 md:w-48 md:h-48 rounded-full border-4 shadow-2xl relative z-10 object-cover ${isLive ? 'border-red-400' : 'border-white'}`}
             referrerPolicy="no-referrer"
           />
         </motion.div>
@@ -76,14 +110,27 @@ export default function Hero() {
           Enchanter Main · League of Legends
         </motion.h2>
 
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed italic"
-        >
-          "Welcome to the Pastry Shop! Cozy vibes, cute plays, and good company on the Rift."
-        </motion.p>
+        {isLive && streamInfo ? (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.35 }}
+            className="mt-4 bg-white/80 backdrop-blur-sm border border-red-100 px-6 py-3 rounded-2xl shadow-sm inline-block max-w-xl"
+          >
+            <p className="text-red-600 font-medium text-sm mb-1">Currently streaming {streamInfo.game_name}</p>
+            <p className="text-gray-800 font-bold line-clamp-1">{streamInfo.title}</p>
+            <p className="text-gray-500 text-xs mt-1">{streamInfo.viewer_count} viewers</p>
+          </motion.div>
+        ) : (
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed italic"
+          >
+            "Welcome to the Pastry Shop! Cozy vibes, cute plays, and good company on the Rift."
+          </motion.p>
+        )}
 
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
@@ -95,10 +142,10 @@ export default function Hero() {
             href="https://twitch.tv/aiiru_" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-[#9146FF] text-white rounded-full font-bold hover:bg-[#772ce8] transition-all hover:scale-105 shadow-lg shadow-purple-500/30"
+            className={`flex items-center gap-2 px-6 py-3 text-white rounded-full font-bold transition-all hover:scale-105 shadow-lg ${isLive ? 'bg-red-500 hover:bg-red-600 shadow-red-500/30 animate-pulse' : 'bg-[#9146FF] hover:bg-[#772ce8] shadow-purple-500/30'}`}
           >
             <Twitch className="w-5 h-5" />
-            Watch Live
+            {isLive ? 'Watch Live Now' : 'Watch Live'}
           </a>
           <a 
             href="https://discord.gg/DYHV36PH25" 

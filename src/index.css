@@ -10,6 +10,10 @@
   --color-pastry-accent: #0390fc;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-pastry-pink);
   color: var(--color-pastry-dark);

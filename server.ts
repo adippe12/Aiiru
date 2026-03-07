@@ -5,9 +5,93 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+let twitchAccessToken = "";
+let twitchTokenExpiry = 0;
+
+async function getTwitchToken() {
+  if (Date.now() < twitchTokenExpiry && twitchAccessToken) {
+    return twitchAccessToken;
+  }
+  const clientId = process.env.TWITCH_CLIENT_ID;
+  const clientSecret = process.env.TWITCH_CLIENT_SECRET;
+  if (!clientId || !clientSecret) {
+    throw new Error("Twitch credentials not configured");
+  }
+  const response = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`);
+  twitchAccessToken = response.data.access_token;
+  twitchTokenExpiry = Date.now() + (response.data.expires_in - 300) * 1000;
+  return twitchAccessToken;
+}
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Twitch API Proxy
+  app.get("/api/twitch/status/:username", async (req, res) => {
+    try {
+      const token = await getTwitchToken();
+      const clientId = process.env.TWITCH_CLIENT_ID!;
+      const { username } = req.params;
+      
+      const userRes = await axios.get(`https://api.twitch.tv/helix/users?login=${username}`, {
+        headers: {
+          "Client-ID": clientId,
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      
+      if (!userRes.data.data.length) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      const user = userRes.data.data[0];
+      
+      const streamRes = await axios.get(`https://api.twitch.tv/helix/streams?user_id=${user.id}`, {
+        headers: {
+          "Client-ID": clientId,
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      
+      const isLive = streamRes.data.data.length > 0;
+      const stream = isLive ? streamRes.data.data[0] : null;
+      
+      res.json({ user, isLive, stream });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch Twitch status", details: error.message });
+    }
+  });
+
+  app.get("/api/twitch/clips/:username", async (req, res) => {
+    try {
+      const token = await getTwitchToken();
+      const clientId = process.env.TWITCH_CLIENT_ID!;
+      const { username } = req.params;
+      
+      const userRes = await axios.get(`https://api.twitch.tv/helix/users?login=${username}`, {
+        headers: {
+          "Client-ID": clientId,
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      
+      if (!userRes.data.data.length) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      const user = userRes.data.data[0];
+      
+      const clipsRes = await axios.get(`https://api.twitch.tv/helix/clips?broadcaster_id=${user.id}&first=6`, {
+        headers: {
+          "Client-ID": clientId,
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      
+      res.json({ clips: clipsRes.data.data });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch Twitch clips", details: error.message });
+    }
+  });
 
   // Riot API Proxy
   app.get("/api/riot/player/:region/:gameName/:tagLine", async (req, res) => {

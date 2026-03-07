@@ -1,61 +1,72 @@
 import { motion } from 'motion/react';
-import { Youtube, Music, Star, Heart, Shield, Gift, CreditCard, Users } from 'lucide-react';
+import { Youtube, Music, Star, Loader2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const LATEST_VIDEOS = {
-  youtube: "OMSR2LvhvlM",
   tiktok: "7607467395124301078"
 };
 
-const PANELS = [
-  {
-    id: 'about',
-    titleImage: 'https://panels.twitch.tv/panel-1295086456-image-0afb4380-aa76-4fdc-9108-2b04631146e9',
-    
-  },
-  {
-    id: 'donate',
-    titleImage: 'https://panels.twitch.tv/panel-1295086456-image-6133a5a1-b8cf-4084-b259-cec201284f72',
-    content: (
-      <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
-        <p>Donations are never required but always incredibly appreciated! They help me improve the stream and buy more pastries.</p>
-        <p className="text-xs italic text-gray-400 mt-4">*Please note that all donations are non-refundable.</p>
-        <div className="mt-auto pt-6">
-          <a 
-            href="https://ko-fi.com/aiiru" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-blue-400 hover:bg-blue-500 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
-          >
-            <Heart className="w-5 h-5" />
-            Support on Ko-fi
-          </a>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 'wishlist',
-    titleImage: 'https://panels.twitch.tv/panel-1295086456-image-3530c58a-9f42-4b29-9201-34bc50327781',
-    content: (
-      <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
-        <p>Want to send a gift? Check out my Throne wishlist!</p>
-        <div className="mt-auto pt-6">
-          <a 
-            href="https://throne.com/Aiiru" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 w-full py-3 px-6 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
-          >
-            <Gift className="w-5 h-5" />
-            Support on Throne
-          </a>
-        </div>
-      </div>
-    )
-  }
-];
+interface Video {
+  id: string;
+  title: string;
+  link: string;
+  thumbnail: string;
+}
 
 export default function FeaturedContent() {
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchLatestYoutubeVideos() {
+      try {
+        const channelUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCgiEvLJ7IuMewNaE-j83-3A');
+        
+        const response = await fetch(channelUrl);
+        const data = await response.json();
+        const text = data.contents;
+        
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(text, "text/xml");
+        
+        const entries = Array.from(xmlDoc.querySelectorAll('entry'));
+        
+        const realVideos = entries.map(entry => {
+          const title = entry.querySelector('title')?.textContent || '';
+          const link = entry.querySelector('link')?.getAttribute('href') || '';
+          const idElement = entry.getElementsByTagName('yt:videoId')[0];
+          const id = idElement ? idElement.textContent || '' : entry.querySelector('id')?.textContent?.replace('yt:video:', '') || '';
+          
+          return { id, title, link };
+        }).filter(video => {
+          return !video.title.toLowerCase().includes('#lpp');
+        });
+
+        const latestThree = realVideos.slice(0, 3);
+
+        const formattedVideos = latestThree.map(video => {
+          return {
+            id: video.id,
+            title: video.title,
+            link: video.link,
+            thumbnail: `https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`
+          };
+        });
+
+        setVideos(formattedVideos);
+      } catch (error) {
+        console.error("Error fetching YouTube videos:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchLatestYoutubeVideos();
+  }, []);
+
+  const mainVideo = videos.length > 0 ? videos[0] : null;
+  const otherVideos = videos.slice(1);
+
   return (
     <section className="py-24 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-16">
@@ -68,7 +79,7 @@ export default function FeaturedContent() {
       </div>
 
       {/* Videos Section - Asymmetric Grid for Landscape vs Portrait */}
-      <div className="grid lg:grid-cols-3 gap-8 mb-32">
+      <div className="grid lg:grid-cols-3 gap-8">
         {/* YouTube Embed - Landscape (Takes 2 columns) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -83,19 +94,58 @@ export default function FeaturedContent() {
             <h3 className="text-2xl font-bold text-gray-800">Latest on YouTube</h3>
           </div>
           
-          <div className="w-full aspect-video rounded-2xl overflow-hidden bg-gray-100 shadow-inner">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src={`https://www.youtube.com/embed/${LATEST_VIDEOS.youtube}`}
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
-          </div>
+          {loading ? (
+            <div className="w-full aspect-video rounded-2xl bg-gray-50 flex items-center justify-center">
+              <Loader2 className="w-8 h-8 text-red-500 animate-spin" />
+            </div>
+          ) : mainVideo ? (
+            <div className="flex flex-col gap-6">
+              <div className="w-full aspect-video rounded-2xl overflow-hidden bg-gray-100 shadow-inner">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src={`https://www.youtube.com/embed/${mainVideo.id}`}
+                  title={mainVideo.title}
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              
+              {otherVideos.length > 0 && (
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {otherVideos.map((video) => (
+                    <a 
+                      key={video.id} 
+                      href={video.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group flex gap-3 items-start p-3 rounded-2xl hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="w-32 aspect-video rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative">
+                        <img 
+                          src={video.thumbnail} 
+                          alt={video.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+                      </div>
+                      <h4 className="font-medium text-gray-800 line-clamp-2 text-sm group-hover:text-red-600 transition-colors">
+                        {video.title}
+                      </h4>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-gray-100 shadow-inner flex items-center justify-center">
+              <p className="text-gray-500 font-medium">No recent videos found</p>
+            </div>
+          )}
         </motion.div>
 
         {/* TikTok Embed - Portrait (Takes 1 column) */}
@@ -124,39 +174,6 @@ export default function FeaturedContent() {
             ></iframe>
           </div>
         </motion.div>
-      </div>
-
-      {/* Info Panels Section */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Stream Info</h2>
-        <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {PANELS.map((panel, i) => (
-          <motion.div 
-            key={panel.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="flex flex-col items-center h-full"
-          >
-            {/* Twitch Panel Header Image */}
-            <img 
-              src={panel.titleImage} 
-              alt={`${panel.id} panel`} 
-              className={`w-full max-w-[320px] object-contain relative z-10 drop-shadow-md hover:scale-105 transition-transform duration-300 ${panel.content ? 'mb-[-10px]' : ''}`} 
-            />
-            
-            {/* Panel Content Box */}
-            {panel.content && (
-              <div className="bg-white rounded-3xl p-6 pt-8 shadow-lg border-2 border-blue-50 w-full relative z-0 flex-grow">
-                {panel.content}
-              </div>
-            )}
-          </motion.div>
-        ))}
       </div>
     </section>
   );
