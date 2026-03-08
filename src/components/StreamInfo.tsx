@@ -3,10 +3,6 @@ import { Heart, Gift } from 'lucide-react';
 
 const PANELS = [
   {
-    id: 'about',
-    titleImage: 'https://panels.twitch.tv/panel-1295086456-image-0afb4380-aa76-4fdc-9108-2b04631146e9',
-  },
-  {
     id: 'donate',
     titleImage: 'https://panels.twitch.tv/panel-1295086456-image-6133a5a1-b8cf-4084-b259-cec201284f72',
     content: (
@@ -57,7 +53,7 @@ export default function StreamInfo() {
         <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {PANELS.map((panel, i) => (
           <motion.div 
             key={panel.id}
