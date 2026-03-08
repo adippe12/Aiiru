@@ -26,8 +26,8 @@ export default function RulesPerks() {
         
         {/* Stream Rules */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-blue-100 relative overflow-hidden flex flex-col items-center"
         >
@@ -60,8 +60,8 @@ export default function RulesPerks() {
 
         {/* Subscriber Perks */}
         <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-cyan-100 relative overflow-hidden flex flex-col items-center"
         >
