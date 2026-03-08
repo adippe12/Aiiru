@@ -11,7 +11,6 @@ import Socials from './components/Socials';
 import LeagueProfiles from './components/LeagueProfiles';
 import FeaturedContent from './components/FeaturedContent';
 import RulesPerks from './components/RulesPerks';
-import TwitchEmbed from './components/TwitchEmbed';
 import TwitchClips from './components/TwitchClips';
 import Credits from './components/Credits';
 import BunnyFollower from './components/BunnyFollower';
@@ -19,7 +18,6 @@ import StreamInfo from './components/StreamInfo';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#home' },
-  { name: 'Live', href: '#live' },
   { name: 'Socials', href: '#socials' },
   { name: 'League', href: '#league' },
   { name: 'Content', href: '#content' },
@@ -112,15 +110,11 @@ export default function App() {
       <BunnyFollower />
       
       <main className="flex flex-col">
-        <div id="home" className="scroll-mt-20">
+        <div id="home" className="scroll-mt-20 bg-[#f0f9ff]">
           <Hero />
         </div>
-        
-        <div id="live" className="scroll-mt-20 bg-white border-b border-blue-100/50">
-          <TwitchEmbed />
-        </div>
 
-        <div id="socials" className="scroll-mt-20 bg-gradient-to-b from-blue-50/50 to-transparent">
+        <div id="socials" className="scroll-mt-20 bg-gradient-to-b from-[#f0f9ff] to-transparent">
           <Socials />
         </div>
 

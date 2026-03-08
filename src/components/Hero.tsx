@@ -43,10 +43,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[80vh] flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[80vh] flex flex-col items-center justify-center overflow-hidden pb-24">
       {/* Background Banner */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-[#f0f9ff] z-10" />
         <img 
           src={BANNER_URL} 
           alt="AIIRU Banner" 
