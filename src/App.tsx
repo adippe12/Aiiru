@@ -94,6 +94,18 @@ function Navigation() {
 }
 
 export default function App() {
+  useEffect(() => {
+    if (window.location.hash) {
+      setTimeout(() => {
+        const id = window.location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen font-sans selection:bg-blue-200 selection:text-blue-900">
       <Navigation />
