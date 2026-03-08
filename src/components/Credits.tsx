@@ -2,21 +2,26 @@ import { motion } from 'motion/react';
 import { Heart, ExternalLink } from 'lucide-react';
 
 const CREDITS = [
-  { role: "Alerts", name: "awigui", link: "https://ko-fi.com/awigui" },
+  { role: "Live 2D Art & Rig", name: "Kitto", link: "https://x.com/kitto_jpg" },
+  { role: "Live 2D Design", name: "Teyyami", link: "https://x.com/teyyami" },
+  { role: "Alerts", name: "Tanporo", link: "https://x.com/_tanporo_" },
   { role: "Alerts Sound", name: "TOFIEmusic", link: "https://x.com/tofiemusic" },
-  { role: "Offline Screen & Dolphin Emote", name: "Lillimon", link: "https://x.com/_Lillimon_" },
-  { role: "Channel Points & Tier Flair", name: "ShoYukia", link: "https://www.etsy.com/it/shop/ShoYukia" },
-  { role: "Sub Badges", name: "scrimsy", link: "https://www.etsy.com/shop/scrimsy" },
-  { role: "League Emotes", name: "cinamoncune", link: "https://ko-fi.com/cinamoncune" },
-  { role: "Animated Emotes", name: "EmoteLab", link: "" },
+  { role: "Offline, Scenes & Dolphin Emote", name: "Lillimon", link: "https://x.com/_Lillimon_" },
+  { role: "Game Background Art", name: "icorasama", link: "https://x.com/icorasama" },
+  { role: "Channel Points & Tier Flair", name: "ShoYukia", link: "https://www.etsy.com/it/shop/ShoYukia?ref=shop-header-name&listing_id=1852544810&from_page=listing" },
+  { role: "Badges", name: "scrimsy", link: "https://www.etsy.com/shop/scrimsy" },
+  { role: "Milio & Lulu Emotes", name: "SViSHOP", link: "https://www.etsy.com/shop/SViSHOP#items" },
+  { role: "Soraka & Yuumi Emotes", name: "cinamoncune", link: "https://ko-fi.com/cinamoncune" },
+  { role: "Animated Emotes", name: "EmoteLab on steam", link: "" },
   { role: "Bunny Emotes", name: "LittoBug", link: "https://x.com/littobug" },
   { role: "Other Emotes", name: "sonshine_arts", link: "https://ko-fi.com/sonshine_arts" },
-  { role: "Scenes & Panels", name: "skiiryu", link: "https://vgen.co/skiiryu/shop" },
-  { role: "Background Art", name: "Kiwi", link: "https://x.com/kiwiqwq0" },
-  { role: "Christmas Badges", name: "Ariixiu", link: "https://www.etsy.com/shop/Ariixiu" },
+  { role: "Static Aiiru Emotes", name: "shylestials", link: "https://x.com/shylestials" },
+  { role: "Frieren Emotes", name: "LinaKaizumi", link: "https://ko-fi.com/linakaizumi/shop" },
+  { role: "Panels", name: "AssetShop", link: "https://www.etsy.com/shop/AssetShop" },
   { role: "Bit Badges", name: "PegaDesign", link: "https://www.etsy.com/shop/PegaDesign" },
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
-  { role: "PFP & Banner", name: "veramuki", link: "https://x.com/vera_muki" }
+  { role: "PFP", name: "velirys", link: "https://x.com/velirys" },
+  { role: "Banner", name: "TishyChanVT", link: "https://x.com/TishyChanVT" }
 ];
 
 export default function Credits() {
