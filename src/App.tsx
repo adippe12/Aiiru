@@ -102,7 +102,7 @@ export default function App() {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 500);
+      }, 800);
     }
   }, []);
 
