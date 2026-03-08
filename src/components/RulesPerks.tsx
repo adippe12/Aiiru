@@ -1,71 +1,48 @@
 import { motion } from 'motion/react';
-import { ShieldAlert, Star, Crown, Heart, MessageCircle, Gift, Tv, Users } from 'lucide-react';
+import { ShieldAlert, Star, Crown, Heart, MessageCircle, Gift, Tv, Users, PlayCircle, BadgeCheck, X } from 'lucide-react';
 
-const RULES = [
-  "No backseating.",
-  "No negativity in chat (I don't like complaints).",
-  "Respect everybody.",
-  "Follow Twitch rules."
+const POSITIVE_RULES = [
+  "English Only",
+  "Follow Twitch Rules",
+  "Respect Everybody",
+  "Bring Good Vibes"
 ];
 
-const PERKS = [
-  { icon: Tv, text: "Offline LoL streams on Discord" },
-  { icon: Crown, text: "Special roles & badges" },
-  { icon: Heart, text: "Unlock emotes everywhere" },
-  { icon: ShieldAlert, text: "Ad-free viewing" },
-  { icon: Users, text: "Play together on stream" },
-  { icon: MessageCircle, text: "Access to Pastry Shop Telegram" },
-  { icon: Star, text: "LoL friendlist (EUW)" },
-  { icon: Gift, text: "Earn channel points (sweets) faster" }
+const NEGATIVE_RULES = [
+  "No Negativity",
+  "No Drama",
+  "No Spoilers",
+  "No Self Promo",
+  "No Backseating",
+  "No Hate/ Harassment, I am sensitive"
+];
+
+const TIER1_PERKS = [
+  { icon: Tv, text: "I stream for you my offline LoL's games on discord." },
+  { icon: BadgeCheck, text: "Get special roles and special badges on discord." },
+  { icon: Heart, text: "Unlock the emotes and use them around Twitch and Discord channels." },
+  { icon: Crown, text: "Unlock sub badges." },
+  { icon: MessageCircle, text: "You can join the Pastry Shop Clients telegram." },
+  { icon: Users, text: "We play together on stream." },
+  { icon: ShieldAlert, text: "No AD." },
+  { icon: Star, text: "You can have me in your LoL friendlist (EUW)." },
+  { icon: Gift, text: "Gain ''sweets'' channel points faster to get all the rewards you want." },
+  { icon: PlayCircle, text: "You can pause/go back in my LIVE stream." }
 ];
 
 export default function RulesPerks() {
   return (
     <section className="pt-12 pb-24 px-4 max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-16">
+      <div className="flex flex-col gap-12">
         
-        {/* Stream Rules */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-blue-100 relative overflow-hidden flex flex-col items-center"
-        >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full opacity-50" />
-          
-          <img 
-            src="https://panels.twitch.tv/panel-1295086456-image-6814239a-d0cd-48f9-aafc-811410fd9072" 
-            alt="Rules panel" 
-            className="w-full max-w-[320px] object-contain mb-8 relative z-10 drop-shadow-md" 
-          />
-          
-          <ul className="space-y-6 relative z-10 w-full">
-            {RULES.map((rule, index) => (
-              <motion.li 
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 text-lg text-gray-700 font-medium"
-              >
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center font-bold border-2 border-blue-200">
-                  {index + 1}
-                </span>
-                <span className="pt-1">{rule}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-
         {/* Subscriber Perks */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-[3rem] p-10 md:p-14 shadow-2xl border-4 border-cyan-100 relative overflow-hidden flex flex-col items-center"
+          className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-[3rem] p-8 md:p-12 shadow-2xl border-4 border-cyan-100 relative overflow-hidden flex flex-col items-center w-full"
         >
-          <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan-200 rounded-tr-full opacity-30" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-200 rounded-tr-full opacity-30" />
           
           <img 
             src="https://panels.twitch.tv/panel-1295086456-image-65639caa-0df1-48c2-99bb-76484cee9886" 
@@ -73,28 +50,87 @@ export default function RulesPerks() {
             className="w-full max-w-[320px] object-contain mb-8 relative z-10 drop-shadow-md" 
           />
 
-          <div className="mb-8 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-cyan-100 shadow-sm w-full relative z-10">
-            <h3 className="text-xl font-bold text-cyan-800 mb-2 flex items-center gap-2">
-              <Crown className="w-5 h-5" /> Tier 1
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-              {PERKS.map((perk, index) => (
-                <div key={index} className="flex items-center gap-3 text-gray-700 font-medium bg-white p-3 rounded-xl shadow-sm">
-                  <perk.icon className="w-5 h-5 text-cyan-500 flex-shrink-0" />
-                  <span className="text-sm">{perk.text}</span>
+          <div className="w-full relative z-10 flex flex-col gap-6">
+            <div className="p-6 bg-white/60 backdrop-blur-sm rounded-3xl border border-cyan-100 shadow-sm w-full">
+              <h3 className="text-xl font-bold text-cyan-800 mb-4 flex items-center gap-2 justify-center">
+                <Crown className="w-6 h-6" /> Tier 1
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                {TIER1_PERKS.map((perk, index) => (
+                  <div key={index} className="flex flex-col items-center text-center gap-2 text-gray-700 font-medium bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                    <perk.icon className="w-6 h-6 text-cyan-500 flex-shrink-0" />
+                    <span className="text-xs leading-tight">{perk.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl text-white shadow-lg relative overflow-hidden group w-full max-w-2xl mx-auto text-center">
+              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <h3 className="text-xl font-bold mb-3 flex items-center gap-2 justify-center">
+                <Crown className="w-6 h-6 fill-white" /> Tier 2/3
+              </h3>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 font-medium text-cyan-50">
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4" />
+                  <span>Sub badge's special decorations.</span>
                 </div>
-              ))}
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  <span>Dedicated discord role.</span>
+                </div>
+              </div>
             </div>
           </div>
+        </motion.div>
 
-          <div className="p-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl text-white shadow-lg relative overflow-hidden group">
-            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-              <Crown className="w-5 h-5 fill-white" /> Tier 2/3
-            </h3>
-            <p className="font-medium text-cyan-50">
-              Special sub-badge decorations and a dedicated Discord role.
-            </p>
+        {/* Stream Rules */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-[3rem] p-8 md:p-10 shadow-2xl border-4 border-blue-100 relative overflow-hidden flex flex-col items-center w-full max-w-3xl mx-auto"
+        >
+          <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100 rounded-bl-full opacity-50" />
+          
+          <img 
+            src="https://panels.twitch.tv/panel-1295086456-image-6814239a-d0cd-48f9-aafc-811410fd9072" 
+            alt="Rules panel" 
+            className="w-full max-w-[280px] object-contain mb-8 relative z-10 drop-shadow-md" 
+          />
+          
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 relative z-10 w-full">
+            <div className="flex flex-col gap-2.5">
+              {POSITIVE_RULES.map((rule, index) => (
+                <motion.div 
+                  key={`pos-${index}`}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex items-center gap-3 text-sm text-gray-700 font-medium bg-blue-50/50 px-4 py-3 rounded-2xl border border-blue-100/50"
+                >
+                  <Heart className="w-4 h-4 text-blue-400 fill-blue-400 flex-shrink-0" />
+                  <span>{rule}</span>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="flex flex-col gap-2.5">
+              {NEGATIVE_RULES.map((rule, index) => (
+                <motion.div 
+                  key={`neg-${index}`}
+                  initial={{ opacity: 0, x: 10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex items-center gap-3 text-sm text-gray-700 font-medium bg-red-50/50 px-4 py-3 rounded-2xl border border-red-100/50"
+                >
+                  <X className="w-4 h-4 text-red-400 flex-shrink-0 stroke-[3]" />
+                  <span>{rule}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 

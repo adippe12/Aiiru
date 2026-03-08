@@ -24,7 +24,7 @@ const NAV_LINKS = [
   { name: 'League', href: '#league' },
   { name: 'Content', href: '#content' },
   { name: 'Clips', href: '#clips' },
-  { name: 'Info', href: '#info' },
+  { name: 'Perks', href: '#perks' },
   { name: 'Credits', href: '#credits' },
 ];
 
@@ -136,9 +136,11 @@ export default function App() {
           <TwitchClips />
         </div>
 
-        <div id="info" className="scroll-mt-20 bg-gradient-to-b from-blue-50/50 to-transparent">
+        <div className="bg-gradient-to-b from-blue-50/50 to-transparent">
           <StreamInfo />
-          <RulesPerks />
+          <div id="perks" className="scroll-mt-20">
+            <RulesPerks />
+          </div>
         </div>
 
         <div id="credits" className="scroll-mt-20 bg-white border-y border-blue-100/50">
