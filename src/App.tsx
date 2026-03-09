@@ -168,7 +168,7 @@ export default function App() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.05, rotate: -5 }}
-            src="https://panels.twitch.tv/panel-1295086456-image-a7760270-5fb0-4f5b-9b08-041bb9d15314" 
+            src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/logo.png" 
             alt="Pastry Shop Logo" 
             className="h-28 sm:h-32 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(3,144,252,0.3)] transition-all cursor-pointer"
             referrerPolicy="no-referrer"

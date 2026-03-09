@@ -4,7 +4,7 @@ import { Heart, Gift } from 'lucide-react';
 const PANELS = [
   {
     id: 'donate',
-    titleImage: 'https://panels.twitch.tv/panel-1295086456-image-6133a5a1-b8cf-4084-b259-cec201284f72',
+    titleImage: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/donate.png',
     content: (
       <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
         <p>Donations are never required but always incredibly appreciated! They help me improve the stream and buy more pastries.</p>
@@ -25,7 +25,7 @@ const PANELS = [
   },
   {
     id: 'wishlist',
-    titleImage: 'https://panels.twitch.tv/panel-1295086456-image-3530c58a-9f42-4b29-9201-34bc50327781',
+    titleImage: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/wishlist.png',
     content: (
       <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
         <p>Want to send a gift? Check out my Throne wishlist!</p>

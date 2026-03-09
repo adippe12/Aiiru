@@ -46,7 +46,7 @@ export default function RulesPerks() {
           
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 w-full mb-8">
             <img 
-              src="https://panels.twitch.tv/panel-1295086456-image-65639caa-0df1-48c2-99bb-76484cee9886" 
+              src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/subscribe.png" 
               alt="Subscribe panel" 
               className="w-full max-w-[280px] object-contain drop-shadow-md" 
             />
@@ -110,7 +110,7 @@ export default function RulesPerks() {
           <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100 rounded-bl-full opacity-50" />
           
           <img 
-            src="https://panels.twitch.tv/panel-1295086456-image-6814239a-d0cd-48f9-aafc-811410fd9072" 
+            src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/rules.png" 
             alt="Rules panel" 
             className="w-full max-w-[280px] object-contain mb-8 relative z-10 drop-shadow-md" 
           />

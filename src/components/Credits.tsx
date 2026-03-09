@@ -29,7 +29,7 @@ export default function Credits() {
     <section className="py-24 px-4 max-w-6xl mx-auto">
       <div className="text-center mb-16 flex flex-col items-center">
         <img 
-          src="https://panels.twitch.tv/panel-1295086456-image-713d0ce1-08eb-4cec-9cdf-ceb120c0cd07" 
+          src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/credits.png" 
           alt="Credits panel" 
           className="w-full max-w-[320px] object-contain mb-6 drop-shadow-md" 
         />
@@ -42,10 +42,13 @@ export default function Credits() {
           const CardContent = (
             <div className="flex flex-col h-full justify-between">
               <div className="mb-2">
-                <h3 className="text-[10px] sm:text-xs font-bold text-blue-500 uppercase tracking-wider mb-1 line-clamp-2">
+                <h3 
+                  className="text-[10px] sm:text-xs font-bold text-blue-500 uppercase tracking-wider mb-1 line-clamp-2 group-hover:line-clamp-none transition-all"
+                  title={credit.role}
+                >
                   {credit.role}
                 </h3>
-                <p className="text-sm sm:text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors truncate">
+                <p className="text-sm sm:text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors truncate" title={credit.name}>
                   {credit.name}
                 </p>
               </div>
