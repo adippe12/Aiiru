@@ -44,25 +44,27 @@ export default function RulesPerks() {
         >
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-200 rounded-tr-full opacity-30" />
           
-          <img 
-            src="https://panels.twitch.tv/panel-1295086456-image-65639caa-0df1-48c2-99bb-76484cee9886" 
-            alt="Subscribe panel" 
-            className="w-full max-w-[320px] object-contain mb-6 relative z-10 drop-shadow-md" 
-          />
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 w-full mb-8">
+            <img 
+              src="https://panels.twitch.tv/panel-1295086456-image-65639caa-0df1-48c2-99bb-76484cee9886" 
+              alt="Subscribe panel" 
+              className="w-full max-w-[280px] object-contain drop-shadow-md" 
+            />
 
-          <motion.a
-            href="https://www.twitch.tv/subs/aiiru_"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative z-10 mb-8 flex items-center gap-3 bg-[#9146FF] hover:bg-[#772CE8] text-white px-10 py-4 rounded-full font-bold text-xl shadow-[0_8px_20px_rgba(145,70,255,0.4)] hover:shadow-[0_12px_25px_rgba(145,70,255,0.6)] transition-all duration-300 group overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-full" />
-            <Twitch className="w-6 h-6 relative z-10" />
-            <span className="relative z-10">Subscribe Now</span>
-            <Heart className="w-5 h-5 fill-white animate-pulse relative z-10" />
-          </motion.a>
+            <motion.a
+              href="https://www.twitch.tv/subs/aiiru_"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative z-10 flex items-center gap-3 bg-[#9146FF] hover:bg-[#772CE8] text-white px-8 py-4 rounded-full font-bold text-xl shadow-[0_8px_20px_rgba(145,70,255,0.4)] hover:shadow-[0_12px_25px_rgba(145,70,255,0.6)] transition-all duration-300 group overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-full" />
+              <Twitch className="w-6 h-6 relative z-10" />
+              <span className="relative z-10">Subscribe Now</span>
+              <Heart className="w-5 h-5 fill-white animate-pulse relative z-10" />
+            </motion.a>
+          </div>
 
           <div className="w-full relative z-10 flex flex-col gap-6">
             <div className="p-6 bg-white/60 backdrop-blur-sm rounded-3xl border border-cyan-100 shadow-sm w-full">
