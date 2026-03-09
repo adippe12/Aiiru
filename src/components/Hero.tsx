@@ -141,7 +141,7 @@ export default function Hero() {
             transition={{ delay: 0.4 }}
             className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed italic"
           >
-            "Welcome to the Pastry Shop! Cozy vibes, cute plays, and good company on the Rift."
+            "Welcome to the Pastry Shop! Cozy vibes, good plays, and cute company on the Rift."
           </motion.p>
         )}
 

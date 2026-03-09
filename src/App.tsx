@@ -177,7 +177,7 @@ export default function App() {
             AIIRU <span className="text-blue-400 mx-1">♡</span> The Pastry Shop
           </h3>
           <p className="text-blue-100/80 text-lg max-w-md mx-auto mb-8 leading-relaxed">
-            Cozy vibes, cute plays, and good company on the Rift. Grab a pastry and stay a while! 🍰✨
+            Cozy vibes, good plays, and cute company on the Rift. Grab a pastry and stay a while! 🍰✨
           </p>
           
           <div className="flex items-center justify-center gap-2 text-sm text-blue-200/50 font-medium">
