@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 import { Twitch, Star, Coffee, Cake, Cookie, Croissant, Radio } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const AVATAR_URL = 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/pfp.jpg';
-const BANNER_URL = 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/banner.jpg';
+const AVATAR_URL = '/pfp.jpg';
+const BANNER_URL = '/banner.jpg';
 
 const DiscordIcon = ({ className }: { className?: string }) => (
   <svg

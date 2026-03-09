@@ -168,7 +168,7 @@ export default function App() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.05, rotate: -5 }}
-            src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/logov2.png" 
+            src="logov2.png" 
             alt="Pastry Shop Logo" 
             className="h-28 sm:h-32 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(3,144,252,0.3)] transition-all cursor-pointer"
             referrerPolicy="no-referrer"

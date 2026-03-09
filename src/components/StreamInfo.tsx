@@ -4,7 +4,7 @@ import { Heart, Gift } from 'lucide-react';
 const PANELS = [
   {
     id: 'donate',
-    titleImage: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/donate.png',
+    titleImage: '/donate.png',
     content: (
       <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
         <p>Donations are never required but always incredibly appreciated! They help me improve the stream and buy more pastries.</p>
@@ -25,7 +25,7 @@ const PANELS = [
   },
   {
     id: 'wishlist',
-    titleImage: 'https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/wishlist.png',
+    titleImage: '/wishlist.png',
     content: (
       <div className="text-gray-700 space-y-4 leading-relaxed flex flex-col h-full">
         <p>Want to send a gift? Check out my Throne wishlist!</p>

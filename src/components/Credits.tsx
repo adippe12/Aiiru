@@ -30,7 +30,7 @@ export default function Credits() {
     <section className="py-24 px-4 max-w-6xl mx-auto">
       <div className="text-center mb-16 flex flex-col items-center">
         <img 
-          src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/credits.png" 
+          src="/credits.png" 
           alt="Credits panel" 
           className="w-full max-w-[320px] object-contain mb-6 drop-shadow-md" 
         />

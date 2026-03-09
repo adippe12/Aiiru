@@ -46,7 +46,7 @@ export default function RulesPerks() {
           
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 w-full mb-8">
             <img 
-              src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/subscribe.png" 
+              src="/subscribe.png" 
               alt="Subscribe panel" 
               className="w-full max-w-[280px] object-contain drop-shadow-md" 
             />
@@ -110,7 +110,7 @@ export default function RulesPerks() {
           <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100 rounded-bl-full opacity-50" />
           
           <img 
-            src="https://raw.githubusercontent.com/adippe12/aiiruData/refs/heads/main/rules.png" 
+            src="/rules.png" 
             alt="Rules panel" 
             className="w-full max-w-[280px] object-contain mb-8 relative z-10 drop-shadow-md" 
           />
