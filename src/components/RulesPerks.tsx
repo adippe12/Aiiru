@@ -81,19 +81,49 @@ export default function RulesPerks() {
               </div>
             </div>
 
-            <div className="p-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl text-white shadow-lg relative overflow-hidden group w-full max-w-2xl mx-auto text-center">
-              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <h3 className="text-xl font-bold mb-3 flex items-center gap-2 justify-center">
-                <Crown className="w-6 h-6 fill-white" /> Tier 2/3
-              </h3>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 font-medium text-cyan-50">
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4" />
-                  <span>Sub badge's special decorations.</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4" />
-                  <span>Dedicated discord role.</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+              <div className="p-6 bg-gradient-to-r from-blue-400 to-blue-600 rounded-3xl text-white shadow-lg relative overflow-hidden group w-full text-left flex flex-col">
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <Crown className="w-6 h-6 fill-white" /> Tier 2
+                </h3>
+                <ul className="flex flex-col gap-3 font-medium text-blue-50">
+                  <li className="flex items-start gap-2">
+                    <Star className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>Sub badge's special decorations.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Users className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>Dedicated Discord role.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Gift className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>All Tier 1 perks included.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl text-white shadow-lg relative overflow-hidden group w-full text-left flex flex-col">
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <Crown className="w-6 h-6 fill-white text-yellow-300" /> Tier 3 (Master Enchanter)
+                </h3>
+                <ul className="flex flex-col gap-3 font-medium text-purple-50 mb-4">
+                  <li className="flex items-start gap-2">
+                    <Tv className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>1-on-1 Monthly Coaching Session (Exclusive for Enchanters).</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <MessageCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>Direct Access: DM me on Discord to schedule your session!</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Gift className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>Includes all Tier 1 &amp; Tier 2 perks.</span>
+                  </li>
+                </ul>
+                <div className="mt-auto pt-4 border-t border-white/20 text-xs text-purple-100 italic">
+                  Note: This is a promotional offer. The coaching service could be discontinued in the future.
                 </div>
               </div>
             </div>
