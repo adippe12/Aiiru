@@ -120,7 +120,15 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="mt-2 text-xl md:text-2xl font-semibold text-blue-800/80"
         >
-          League of Legends · Enchanter Main
+          League of Legends · High Elo Player · Enchanter Main
+        </motion.h2>
+        <motion.h2
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-2 text-xl md:text-2xl font-semibold text-blue-800/80"
+        >
+          Riot Partner · VTuber 
         </motion.h2>
 
         {isLive && streamInfo ? (
@@ -167,7 +175,7 @@ export default function Hero() {
             className="flex items-center gap-2 px-6 py-3 bg-[#5865F2] text-white rounded-full font-bold hover:bg-[#4752C4] transition-all hover:scale-105 shadow-lg shadow-indigo-500/30"
           >
             <DiscordIcon className="w-5 h-5" />
-            join pastry shop discord
+            Join Pastry Shop
           </a>
           <a 
             href="https://ko-fi.com/aiiru" 
@@ -176,7 +184,7 @@ export default function Hero() {
             className="flex items-center gap-2 px-6 py-3 bg-white text-blue-500 border-2 border-blue-100 rounded-full font-bold hover:bg-blue-50 transition-all hover:scale-105 shadow-lg"
           >
             <Coffee className="w-5 h-5" />
-            Support
+            Support Me
           </a>
         </motion.div>
       </div>

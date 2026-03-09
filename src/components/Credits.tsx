@@ -21,7 +21,8 @@ const CREDITS = [
   { role: "Bit Badges", name: "PegaDesign", link: "https://www.etsy.com/shop/PegaDesign" },
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
   { role: "PFP", name: "velirys", link: "https://x.com/velirys" },
-  { role: "Banner", name: "TishyChanVT", link: "https://x.com/TishyChanVT" }
+  { role: "Banner", name: "TishyChanVT", link: "https://x.com/TishyChanVT" },
+  { role: "Logo", name: "MikaLogo", link: "https://x.com/MikaLogo" }
 ];
 
 export default function Credits() {
