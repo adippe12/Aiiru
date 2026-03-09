@@ -93,15 +93,27 @@ function Navigation() {
 
 export default function App() {
   useEffect(() => {
-    if (window.location.hash) {
-      setTimeout(() => {
-        const id = window.location.hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 1000);
-    }
+    if (!window.location.hash) return;
+    
+    const targetId = window.location.hash.replace('#', '');
+    let scrollAttempts = 0;
+    
+    // Prova ad aggiustare lo scroll ogni 200ms per dare tempo
+    // alle API (Twitch, Riot, Youtube) di caricare i loro contenuti
+    const scrollInterval = setInterval(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      scrollAttempts++;
+      // Dopo 10 tentativi (2 secondi totali) smettiamo di forzare lo scroll
+      if (scrollAttempts >= 10) {
+        clearInterval(scrollInterval);
+      }
+    }, 200);
+
+    return () => clearInterval(scrollInterval);
   }, []);
 
   return (
