@@ -18,12 +18,12 @@ const CREDITS = [
   { role: "Static Aiiru Emotes", name: "shylestials", link: "https://x.com/shylestials" },
   { role: "Frieren Emotes", name: "LinaKaizumi", link: "https://ko-fi.com/linakaizumi/shop" },
   { role: "Panels", name: "AssetShop", link: "https://www.etsy.com/shop/AssetShop" },
+  { role: "Website Panles", name: "skiiryu", link: "https://vgen.co/skiiryu/shop"},
   { role: "Bit Badges", name: "PegaDesign", link: "https://www.etsy.com/shop/PegaDesign" },
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
   { role: "PFP", name: "velirys", link: "https://x.com/velirys" },
   { role: "Banner", name: "TishyChanVT", link: "https://x.com/TishyChanVT" },
-  { role: "Logo", name: "MikaLogo", link: "https://x.com/MikaLogo" },
-  { role: "Website Panles", name: "skiiryu", link: "https://vgen.co/skiiryu/shop"}
+  { role: "Logo", name: "MikaLogo", link: "https://x.com/MikaLogo" }
 ];
 
 export default function Credits() {
