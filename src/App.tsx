@@ -19,7 +19,7 @@ import NoticeBoard from './components/NoticeBoard';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#home' },
-  { name: 'Notice Board', href: '#noticeboard' },
+  { name: 'Latest Updates', href: '#noticeboard' },
   { name: 'Socials', href: '#socials' },
   { name: 'League', href: '#league' },
   { name: 'Content', href: '#content' },
