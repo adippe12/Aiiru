@@ -25,7 +25,7 @@ export default function TwitchClips() {
   const [clips, setClips] = useState<Clip[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isRecent, setIsRecent] = useState(false);
+  const [isRecent, setIsRecent] = useState(true);
 
   useEffect(() => {
     const fetchClips = async () => {
