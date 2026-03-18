@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
-import { Video, Play, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Video, Play, ExternalLink, Calendar, ArrowRightLeft } from 'lucide-react';
 
 interface Clip {
   id: string;
@@ -25,11 +25,13 @@ export default function TwitchClips() {
   const [clips, setClips] = useState<Clip[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isRecent, setIsRecent] = useState(false);
 
   useEffect(() => {
     const fetchClips = async () => {
+      setLoading(true);
       try {
-        const response = await fetch('/api/twitch/clips/aiiru_');
+        const response = await fetch(`/api/twitch/clips/aiiru_?type=${isRecent ? 'recent' : 'top'}`);
         if (!response.ok) {
           throw new Error('Failed to fetch clips');
         }
@@ -43,16 +45,45 @@ export default function TwitchClips() {
     };
 
     fetchClips();
-  }, []);
+  }, [isRecent]);
 
   if (loading) {
     return (
       <section className="py-16 px-4 max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-3 bg-purple-100 rounded-full text-purple-600 mb-4 shadow-sm">
-            <Video className="w-6 h-6" />
-          </div>
-          <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">Top Clips</h2>
+          <button 
+            onClick={() => setIsRecent(!isRecent)}
+            className="relative inline-flex items-center justify-center p-4 bg-purple-100 rounded-full text-purple-600 mb-4 shadow-sm hover:scale-110 hover:bg-purple-200 transition-all cursor-pointer group"
+            title={isRecent ? "Switch to Top Clips" : "Switch to Recent Vods"}
+          >
+            <AnimatePresence mode="wait">
+              {!isRecent ? (
+                <motion.div
+                  key="video"
+                  initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Video className="w-7 h-7" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="calendar"
+                  initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Calendar className="w-7 h-7" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <div className="absolute -bottom-1 -right-1 bg-white p-1.5 rounded-full shadow-sm border border-purple-100 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+              <ArrowRightLeft className="w-3.5 h-3.5" />
+            </div>
+          </button>
+          <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">{isRecent ? 'Recent Vods' : 'Top Clips'}</h2>
           <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-4" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -77,11 +108,40 @@ export default function TwitchClips() {
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-10">
-        <div className="inline-flex items-center justify-center p-3 bg-purple-100 rounded-full text-purple-600 mb-4 shadow-sm">
-          <Video className="w-6 h-6" />
-        </div>
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">Top Clips</h2>
-        <p className="text-lg text-gray-600 italic">Best moments from the Pastry Shop!</p>
+        <button 
+          onClick={() => setIsRecent(!isRecent)}
+          className="relative inline-flex items-center justify-center p-4 bg-purple-100 rounded-full text-purple-600 mb-4 shadow-sm hover:scale-110 hover:bg-purple-200 transition-all cursor-pointer group"
+          title={isRecent ? "Switch to Top Clips" : "Switch to Recent Vods"}
+        >
+          <AnimatePresence mode="wait">
+            {!isRecent ? (
+              <motion.div
+                key="video"
+                initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Video className="w-7 h-7" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="calendar"
+                initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Calendar className="w-7 h-7" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="absolute -bottom-1 -right-1 bg-white p-1.5 rounded-full shadow-sm border border-purple-100 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+            <ArrowRightLeft className="w-3.5 h-3.5" />
+          </div>
+        </button>
+        <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">{isRecent ? 'Recent Vods' : 'Top Clips'}</h2>
+        <p className="text-lg text-gray-600 italic">{isRecent ? 'Latest moments from the Pastry Shop!' : 'Best moments from the Pastry Shop!'}</p>
         <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-4" />
       </div>
 

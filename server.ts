@@ -67,6 +67,7 @@ async function startServer() {
       const token = await getTwitchToken();
       const clientId = process.env.TWITCH_CLIENT_ID!;
       const { username } = req.params;
+      const { type } = req.query;
       
       const userRes = await axios.get(`https://api.twitch.tv/helix/users?login=${username}`, {
         headers: {
@@ -80,14 +81,30 @@ async function startServer() {
       }
       const user = userRes.data.data[0];
       
-      const clipsRes = await axios.get(`https://api.twitch.tv/helix/clips?broadcaster_id=${user.id}&first=6`, {
+      let clipsUrl = `https://api.twitch.tv/helix/clips?broadcaster_id=${user.id}`;
+      
+      if (type === 'recent') {
+        const endedAt = new Date();
+        const startedAt = new Date(endedAt.getTime() - 30 * 24 * 60 * 60 * 1000);
+        clipsUrl += `&started_at=${startedAt.toISOString()}&ended_at=${endedAt.toISOString()}&first=100`;
+      } else {
+        clipsUrl += `&first=6`;
+      }
+      
+      const clipsRes = await axios.get(clipsUrl, {
         headers: {
           "Client-ID": clientId,
           "Authorization": `Bearer ${token}`
         }
       });
       
-      res.json({ clips: clipsRes.data.data });
+      let clips = clipsRes.data.data;
+      
+      if (type === 'recent') {
+        clips = clips.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).slice(0, 6);
+      }
+      
+      res.json({ clips });
     } catch (error: any) {
       res.status(500).json({ error: "Failed to fetch Twitch clips", details: error.message });
     }

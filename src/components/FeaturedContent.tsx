@@ -36,7 +36,7 @@ export default function FeaturedContent() {
               link: `https://www.youtube.com/watch?v=${videoId}`,
               thumbnail: thumbnail
             };
-          }).filter((video: any) => !video.title.toLowerCase().includes('#lpp'));
+          });
 
           const latestVideos = realVideos.slice(0, 5);
 
