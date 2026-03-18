@@ -127,7 +127,7 @@ export default function RulesPerks() {
                   </li>
                 </ul>
                 <div className="mt-auto pt-4 border-t border-white/20 text-xs text-purple-100 italic">
-                  Note: This is a promotional offer. If the coaching service is discontinued in the future, a 1-month notice will be provided.
+                  Note: This is a promotional offer. The coaching service could be discontinued in the future.
                 </div>
               </div>
             </div>
