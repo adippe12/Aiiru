@@ -32,7 +32,7 @@ const TIER1_PERKS = [
 
 export default function RulesPerks() {
   return (
-    <section className="pt-12 pb-24 px-4 max-w-7xl mx-auto">
+    <section className="pt-12 pb-16 px-4 max-w-7xl mx-auto">
       <div className="flex flex-col gap-12">
         
         {/* Subscriber Perks */}
@@ -118,12 +118,16 @@ export default function RulesPerks() {
                     <span>Direct Access: DM me on Discord to schedule your session!</span>
                   </li>
                   <li className="flex items-start gap-2">
+                    <BadgeCheck className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>Special Tier 3 badge flair &amp; dedicated role.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
                     <Gift className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span>Includes all Tier 1 &amp; Tier 2 perks.</span>
                   </li>
                 </ul>
                 <div className="mt-auto pt-4 border-t border-white/20 text-xs text-purple-100 italic">
-                  Note: This is a promotional offer. The coaching service could be discontinued in the future.
+                  Note: This is a promotional offer. If the coaching service is discontinued in the future, a 1-month notice will be provided.
                 </div>
               </div>
             </div>

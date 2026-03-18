@@ -15,9 +15,11 @@ import TwitchClips from './components/TwitchClips';
 import Credits from './components/Credits';
 import BunnyFollower from './components/BunnyFollower';
 import StreamInfo from './components/StreamInfo';
+import NoticeBoard from './components/NoticeBoard';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#home' },
+  { name: 'Notice Board', href: '#noticeboard' },
   { name: 'Socials', href: '#socials' },
   { name: 'League', href: '#league' },
   { name: 'Content', href: '#content' },
@@ -125,6 +127,16 @@ export default function App() {
         <div id="home" className="scroll-mt-20 bg-[#f0f9ff]">
           <Hero />
         </div>
+
+        {/* --- INIZIO NUOVA SEZIONE: NOTICE BOARD --- */}
+        <div id="noticeboard" className="scroll-mt-20 relative bg-gradient-to-b from-pink-50/80 to-white overflow-hidden border-y border-pink-100">
+          {/* Elementi decorativi sfocati di sfondo */}
+          <div className="absolute top-10 left-10 w-32 h-32 bg-pink-200/30 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-200/30 rounded-full blur-3xl pointer-events-none" />
+          
+          <NoticeBoard />
+        </div>
+        {/* --- FINE NUOVA SEZIONE --- */}
 
         <div id="socials" className="scroll-mt-20 bg-gradient-to-b from-[#f0f9ff] to-transparent">
           <Socials />

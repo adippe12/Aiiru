@@ -58,14 +58,14 @@ export default function FeaturedContent() {
   const otherVideos = videos.slice(1);
 
   return (
-    <section className="py-24 px-4 max-w-7xl mx-auto">
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-full text-blue-500 mb-6 shadow-sm">
-          <Star className="w-8 h-8" />
+    <section className="py-16 px-4 max-w-7xl mx-auto">
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full text-blue-500 mb-4 shadow-sm">
+          <Star className="w-6 h-6" />
         </div>
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Featured Content</h2>
+        <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">Featured Content</h2>
         <p className="text-lg text-gray-600 italic">Check out my latest videos across socials!</p>
-        <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
+        <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-4" />
       </div>
 
       {/* Videos Section - Asymmetric Grid for Landscape vs Portrait */}

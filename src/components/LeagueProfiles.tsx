@@ -202,13 +202,13 @@ function ProfileCard({ profile, index }: { profile: typeof PROFILES[0], index: n
 
 export default function LeagueProfiles() {
   return (
-    <section className="py-24 px-4 max-w-6xl mx-auto">
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center p-4 bg-[#091428] border border-[#C8AA6E] rounded-full text-[#C8AA6E] mb-6 shadow-lg">
-          <Shield className="w-8 h-8" />
+    <section className="py-16 px-4 max-w-6xl mx-auto">
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center justify-center p-3 bg-[#091428] border border-[#C8AA6E] rounded-full text-[#C8AA6E] mb-4 shadow-lg">
+          <Shield className="w-6 h-6" />
         </div>
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4 uppercase tracking-wider">League Profiles</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C8AA6E] to-transparent mx-auto mt-6" />
+        <h2 className="text-4xl font-display font-bold text-gray-800 mb-3 uppercase tracking-wider">League Profiles</h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C8AA6E] to-transparent mx-auto mt-4" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">

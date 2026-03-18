@@ -47,9 +47,9 @@ const PANELS = [
 
 export default function StreamInfo() {
   return (
-    <section className="pt-24 pb-12 px-4 max-w-7xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Stream Info</h2>
+    <section className="pt-16 pb-16 px-4 max-w-7xl mx-auto">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-display font-bold text-gray-800 mb-4">Stream Info</h2>
         <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full mt-6" />
       </div>
 

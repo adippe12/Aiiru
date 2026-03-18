@@ -47,13 +47,13 @@ export default function TwitchClips() {
 
   if (loading) {
     return (
-      <section className="py-24 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-4 bg-purple-100 rounded-full text-purple-600 mb-6 shadow-sm">
-            <Video className="w-8 h-8" />
+      <section className="py-16 px-4 max-w-7xl mx-auto">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center p-3 bg-purple-100 rounded-full text-purple-600 mb-4 shadow-sm">
+            <Video className="w-6 h-6" />
           </div>
-          <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Top Clips</h2>
-          <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-6" />
+          <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">Top Clips</h2>
+          <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-4" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -75,14 +75,14 @@ export default function TwitchClips() {
   }
 
   return (
-    <section className="py-24 px-4 max-w-7xl mx-auto">
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center p-4 bg-purple-100 rounded-full text-purple-600 mb-6 shadow-sm">
-          <Video className="w-8 h-8" />
+    <section className="py-16 px-4 max-w-7xl mx-auto">
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center justify-center p-3 bg-purple-100 rounded-full text-purple-600 mb-4 shadow-sm">
+          <Video className="w-6 h-6" />
         </div>
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Top Clips</h2>
+        <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">Top Clips</h2>
         <p className="text-lg text-gray-600 italic">Best moments from the Pastry Shop!</p>
-        <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-6" />
+        <div className="w-24 h-1 bg-purple-300 mx-auto rounded-full mt-4" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

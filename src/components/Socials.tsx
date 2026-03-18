@@ -10,13 +10,13 @@ const SOCIAL_LINKS = [
 
 export default function Socials() {
   return (
-    <section className="py-20 px-4 max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">Connect with Me</h2>
+    <section className="py-16 px-4 max-w-6xl mx-auto">
+      <div className="text-center mb-10">
+        <h2 className="text-4xl font-display font-bold text-gray-800 mb-3">Connect with Me</h2>
         <div className="w-24 h-1 bg-blue-400 mx-auto rounded-full" />
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
         {SOCIAL_LINKS.map((social, index) => (
           <motion.a
             key={social.name}

@@ -194,6 +194,49 @@ async function startServer() {
     }
   });
 
+  // Notion API Proxy - Notice Board
+  app.post("/api/notion/updates", express.json(), async (req, res) => {
+    try {
+      const notionKey = process.env.NOTION_API_KEY;
+      const databaseId = process.env.NOTION_DATABASE_ID;
+
+      if (!notionKey || !databaseId) {
+        return res.status(500).json({ error: "Notion credentials not configured" });
+      }
+
+      const response = await axios.post(
+        `https://api.notion.com/v1/databases/${databaseId}/query`,
+        {
+          sorts: [{ property: "Date", direction: "descending" }],
+          page_size: 100, // Mostra tutti gli avvisi
+        },
+        {
+          headers: {
+            "Authorization": `Bearer ${notionKey}`,
+            "Notion-Version": "2022-06-28",
+            "Content-Type": "application/json"
+          }
+        }
+      );
+
+      // Estrai e formatta i dati per il frontend
+      const updates = response.data.results.map((page: any) => {
+        const props = page.properties;
+        return {
+          id: page.id,
+          title: props.Name?.title[0]?.plain_text || "Update",
+          date: props.Date?.date?.start || page.created_time,
+          description: props.Description?.rich_text[0]?.plain_text || "",
+        };
+      });
+
+      res.json({ updates });
+    } catch (error: any) {
+      console.error("Notion Error:", error.response?.data || error.message);
+      res.status(500).json({ error: "Failed to fetch updates" });
+    }
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
