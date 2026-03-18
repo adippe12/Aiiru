@@ -93,6 +93,16 @@ async function startServer() {
     }
   });
 
+  // Helper ISO 8601 in sec
+  function parseYoutubeDuration(duration: string): number {
+    const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+    if (!match) return 0;
+    const hours = parseInt(match[1]?.replace('H', '')) || 0;
+    const minutes = parseInt(match[2]?.replace('M', '')) || 0;
+    const seconds = parseInt(match[3]?.replace('S', '')) || 0;
+    return hours * 3600 + minutes * 60 + seconds;
+  }
+
   // YouTube API Proxy
   app.get("/api/youtube/latest/:channelId", async (req, res) => {
     try {
@@ -104,8 +114,7 @@ async function startServer() {
       const { channelId } = req.params;
       const uploadsPlaylistId = channelId.replace(/^UC/, 'UU');
       
-      // Fetch latest videos using YouTube Data API v3 (playlistItems is much cheaper on quota than search)
-      const response = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems`, {
+      const playlistResponse = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems`, {
         params: {
           key: apiKey,
           playlistId: uploadsPlaylistId,
@@ -113,9 +122,33 @@ async function startServer() {
           maxResults: 50
         }
       });
+
+      const items = playlistResponse.data.items || [];
+      if (items.length === 0) {
+        return res.json({ items: [] });
+      }
+
+      const videoIds = items.map((item: any) => item.snippet.resourceId.videoId).join(',');
+
+      const videosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/videos`, {
+        params: {
+          key: apiKey,
+          id: videoIds,
+          part: 'snippet,contentDetails' // contentDetails contiene la durata
+        }
+      });
+
+      const filteredVideos = videosResponse.data.items.filter((video: any) => {
+        if (video.snippet.liveBroadcastContent !== 'none') return false;
+
+        const durationInSeconds = parseYoutubeDuration(video.contentDetails.duration);
+
+        return durationInSeconds >= 180 && durationInSeconds <= 3600;
+      });
       
-      res.json(response.data);
+      res.json({ items: filteredVideos });
     } catch (error: any) {
+      console.error("YouTube Error:", error.response?.data || error.message);
       res.status(500).json({ error: "Failed to fetch YouTube videos", details: error.message });
     }
   });

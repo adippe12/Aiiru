@@ -25,7 +25,7 @@ export default function FeaturedContent() {
         
         if (response.ok && data.items) {
           const realVideos = data.items.map((item: any) => {
-            const videoId = item.snippet.resourceId.videoId;
+            const videoId = item.id; 
             const thumbnail = item.snippet.thumbnails?.maxres?.url || 
                               item.snippet.thumbnails?.high?.url || 
                               item.snippet.thumbnails?.medium?.url || 
