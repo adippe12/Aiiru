@@ -3,7 +3,7 @@ import { Youtube, Music, Star, Loader2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const LATEST_VIDEOS = {
-  tiktok: "7607467395124301078"
+  tiktok: "7618948263189777686"
 };
 
 interface Video {
