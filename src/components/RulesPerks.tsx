@@ -111,7 +111,7 @@ export default function RulesPerks() {
                 <ul className="flex flex-col gap-3 font-medium text-purple-50 mb-4">
                   <li className="flex items-start gap-2">
                     <Tv className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                    <span>1-on-1 Monthly Coaching Session (Exclusive for Enchanters).</span>
+                    <span>Monthly Coaching (VOD REVIEW): Send me your gameplay, I'll analyze the key moments, and we'll review them together! (Enchanters only)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <MessageCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
