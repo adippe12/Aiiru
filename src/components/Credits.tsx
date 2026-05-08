@@ -22,7 +22,6 @@ const CREDITS = [
   { role: "Bit Badges", name: "PegaDesign", link: "https://www.etsy.com/shop/PegaDesign" },
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
   { role: "PFP", name: "kiwiqwq0", link: "https://x.com/kiwiqwq0" },
-  { role: "Banner", name: "TishyChanVT", link: "https://x.com/TishyChanVT" },
   { role: "Logo", name: "MikaLogo", link: "https://x.com/MikaLogo" }
 ];
 
