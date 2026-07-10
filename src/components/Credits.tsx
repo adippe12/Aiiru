@@ -20,7 +20,7 @@ const CREDITS = [
   { role: "Website Panles", name: "skiiryu", link: "https://vgen.co/skiiryu/shop"},
   { role: "Bit Badges", name: "PegaDesign", link: "https://www.etsy.com/shop/PegaDesign" },
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
-  { role: "PFP", name: "kiwiqwq0", link: "https://x.com/kiwiqwq0" },
+  { role: "PFP", name: "Ifyoureally_art", link: "https://vgen.co/Ifyoureally_art" },
   { role: "Logo", name: "MikaLogo", link: "https://x.com/MikaLogo" }
 ];
 
