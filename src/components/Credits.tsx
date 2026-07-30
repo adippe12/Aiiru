@@ -22,7 +22,7 @@ const CREDITS = [
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
   { role: "PFP", name: "Ifyoureally_art", link: "https://vgen.co/Ifyoureally_art" },
   { role: "Logo", name: "MikaLogo", link: "https://x.com/MikaLogo" },
-  { role: "PngTuber", name: "MeryMelon", link: "https://x.com/MeryMelon" }
+  { role: "PngTuber", name: "MeryMelon", link: "https://x.com/MeryMelon" },
   { role: "Street Girl Model", name: "kyoki_studio_II", link: "https://vgen.co/kyoki_studio_II" }
 ];
 
