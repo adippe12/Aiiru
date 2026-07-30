@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 
 const PROFILES = [
   {
-    ign: 'aiiru',
-    tag: 'ttv',
+    ign: 'Passenger Cat',
+    tag: 'Aiiru',
     region: 'euw1',
     server: 'EUW',
-    url: 'https://www.op.gg/summoners/euw/aiiru-ttv',
+    url: 'https://www.op.gg/summoners/euw/Passenger%20Cat-Aiiru',
     description: 'Main Account',
     fallbackIcon: 'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/profileicon/5496.png',
   },
