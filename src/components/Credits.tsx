@@ -9,7 +9,7 @@ const CREDITS = [
   { role: "Offline screen art, starting and ending scene, background in lobby scene art, panels & dolphin dance emote", name: "Lillimon", link: "https://x.com/_Lillimon_" },
   { role: "Background art in game scene", name: "icorasama", link: "https://x.com/icorasama" },
   { role: "Channel Points & Tier Flair", name: "ShoYukia", link: "https://www.etsy.com/it/shop/ShoYukia?ref=shop-header-name&listing_id=1852544810&from_page=listing" },
-  { role: "Badges", name: "scrimsy", link: "https://www.etsy.com/shop/scrimsy" },
+  { role: "Badges", name: "nyunnya", link: "https://vgen.co/nyunnya/shop" },
   { role: "Milio & Lulu Emotes", name: "SViSHOP", link: "https://www.etsy.com/shop/SViSHOP#items" },
   { role: "Soraka & Yuumi Emotes", name: "cinamoncune", link: "https://ko-fi.com/cinamoncune" },
   { role: "Animated Emotes", name: "EmoteLab on steam", link: "" },
