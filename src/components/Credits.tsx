@@ -17,6 +17,7 @@ const CREDITS = [
   { role: "Other Emotes", name: "sonshine_arts", link: "https://ko-fi.com/sonshine_arts" },
   { role: "Static Aiiru Emotes", name: "shylestials", link: "https://x.com/shylestials" },
   { role: "Frieren Emotes", name: "LinaKaizumi", link: "https://ko-fi.com/linakaizumi/shop" },
+  { role: "Additional Emotes", name: "MeryMelon", link: "https://vgen.co/MeryMelon" },
   { role: "Website Panles", name: "skiiryu", link: "https://vgen.co/skiiryu/shop"},
   { role: "Bit Badges", name: "PegaDesign", link: "https://www.etsy.com/shop/PegaDesign" },
   { role: "HUD League Overlay", name: "lunariachi", link: "https://x.com/lunariachi" },
