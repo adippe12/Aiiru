@@ -6,7 +6,7 @@ const CREDITS = [
   { role: "Live 2D Design", name: "Teyyami", link: "https://x.com/teyyami" },
   { role: "Alerts", name: "Tanporo", link: "https://x.com/_tanporo_" },
   { role: "Alerts Sound", name: "TOFIEmusic", link: "https://x.com/tofiemusic" },
-  { role: "Offline screen art, starting and ending scene, background in lobby scene art, panels & dolphin dance emote", name: "Lillimon", link: "https://x.com/_Lillimon_" },
+  { role: "Chibi model, offline screen art, starting and ending scene, background in lobby scene art, panels & dolphin dance emote", name: "Lillimon", link: "https://x.com/_Lillimon_" },
   { role: "Background art in game scene", name: "icorasama", link: "https://x.com/icorasama" },
   { role: "Channel Points & Tier Flair", name: "ShoYukia", link: "https://www.etsy.com/it/shop/ShoYukia?ref=shop-header-name&listing_id=1852544810&from_page=listing" },
   { role: "Badges", name: "nyunnya", link: "https://vgen.co/nyunnya/shop" },
