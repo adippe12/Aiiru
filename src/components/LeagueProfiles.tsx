@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 const PROFILES = [
   {
-    ign: 'mia#heal',
+    ign: 'mia',
     tag: 'Aiiru',
     region: 'euw1',
     server: 'EUW',
