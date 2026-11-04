@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const PROFILES = [
   {
     ign: 'mia',
-    tag: 'Aiiru',
+    tag: 'heal',
     region: 'euw1',
     server: 'EUW',
     url: 'https://op.gg/lol/summoners/euw/mia-heal',
